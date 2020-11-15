@@ -1,0 +1,38 @@
+.container {
+  max-width: 800px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+}
+
+.inside {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.easy,
+.medium,
+.hard {
+  cursor: pointer;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+  width: auto;
+  background-color: rgb(155, 204, 204);
+  padding: 10.3%;
+  margin: 0.1%;
+}
+
+.medium {
+  padding: 7.4%;
+}
+
+.hard {
+  padding: 4.7%;
+}
