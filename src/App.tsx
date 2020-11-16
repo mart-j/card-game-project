@@ -66,7 +66,9 @@ const App = () => {
           const all = grid.filter((card) => card.opened === true);
           if (all.length === grid.length) {
             alert('Congratulations You won!');
+            localStorage.setItem('captureScore', time!);
             setCaptureScore(time);
+            
             setIsGameActive(false);
           } else {
             alert('Pair was found!');

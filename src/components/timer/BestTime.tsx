@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useRef } from 'react';
 import styles from './Times.module.scss';
 
 interface Props {
@@ -6,25 +6,31 @@ interface Props {
 }
 
 const BestTime: FC<Props> = ({ captureScore }) => {
-  const [bestScore, setBestScore] = useState('00:00');
+  const initialRender = useRef(true);
 
   useEffect(() => {
-    checkBest();
+    if (initialRender.current) {
+      initialRender.current = false;
+    } else {
+      checkBest();
+    }
   }, [captureScore]);
 
   const checkBest = () => {
     if (
-      Date.parse(`01/01/2011 10:${captureScore}`) <
-      Date.parse(`01/01/2011 10:${bestScore}`)
+      localStorage.getItem('captureScore')! <
+        localStorage.getItem('bestScore')! ||
+      localStorage.getItem('bestScore') === null
     ) {
-      setBestScore(`${captureScore}`);
+      localStorage.setItem('bestScore', localStorage.getItem('captureScore')!);
+     
     }
   };
 
   return (
     <div className={styles.timeWrapper}>
-      <div>LastTime: {captureScore}</div>
-      <div>BestTime: {bestScore}</div>
+      <div>LastTime: {localStorage.getItem('captureScore')}</div>
+      <div>BestTime: {localStorage.getItem('bestScore')!}</div>
     </div>
   );
 };
