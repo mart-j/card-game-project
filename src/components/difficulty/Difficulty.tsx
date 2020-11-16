@@ -43,7 +43,9 @@ const Difficulty: FC<Props> = ({
           );
         })
       ) : (
-        <button onClick={resetDifficulty}>Restart Game</button>
+        <button className={styles.restartButton} onClick={resetDifficulty}>
+          Restart Game
+        </button>
       )}
     </div>
   );

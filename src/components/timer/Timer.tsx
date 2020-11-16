@@ -1,4 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
+import styles from './Times.module.scss';
 
 interface Props {
   time: string | undefined;
@@ -31,7 +32,7 @@ const Timer: FC<Props> = ({ isGameActive, difficulty, setTime, time }) => {
     setTime(`${`0${minutes}`.slice(-2)}:${`0${seconds}`.slice(-2)}`);
   }, [isGameActive, seconds]);
 
-  return <h3>{time}</h3>;
+  return <h3 className={styles.timer}>{time}</h3>;
 };
 
 export default Timer;

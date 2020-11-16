@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import styles from './App.module.scss';
 import DrawGrid from './components/grid/DrawGrid';
 import Difficulty from './components/difficulty/Difficulty';
 import Timer from './components/timer/Timer';
 import BestTime from './components/timer/BestTime';
+import 'react-toastify/scss/main.scss';
+
+toast.configure();
 
 type Card = {
   odd: boolean;
@@ -12,6 +16,7 @@ type Card = {
   opened: boolean;
   revealed: boolean;
 };
+
 const App = () => {
   const [difficulty, setDicciculty] = useState(0);
   const [grid, setGrid] = useState<Card[]>([]);
@@ -65,13 +70,13 @@ const App = () => {
         setTimeout(() => {
           const all = grid.filter((card) => card.opened === true);
           if (all.length === grid.length) {
-            alert('Congratulations You won!');
+            toast('Congratulations You won!');
             localStorage.setItem('captureScore', time!);
             setCaptureScore(time);
-            
+
             setIsGameActive(false);
           } else {
-            alert('Pair was found!');
+            toast('Pair was found!');
           }
         }, 500);
       } else if (newArr.length === 2) {
@@ -86,18 +91,24 @@ const App = () => {
 
   return (
     <div className={styles.container}>
-      <Timer
-        time={time}
-        setTime={setTime}
-        isGameActive={isGameActive}
-        difficulty={difficulty}
-      />
-      <BestTime captureScore={captureScore} />
+      <h1 className={styles.heading}>Memory Game</h1>
+      <div className={styles.timeContainer}>
+      <div className={styles.timeWrapper}>
+        <Timer
+          time={time}
+          setTime={setTime}
+          isGameActive={isGameActive}
+          difficulty={difficulty}
+        />
+        <BestTime difficulty={difficulty} captureScore={captureScore} />
+      </div>
+      </div>
       <Difficulty
         setIsGameActive={setIsGameActive}
         difficulty={difficulty}
         setDicciculty={setDicciculty}
       />
+
       <DrawGrid
         revealCard={revealCard}
         grid={grid}

@@ -1,3 +1,25 @@
-.header {
-  color: crimson;
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+.timeContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.timeWrapper {
+  position: relative;
+  font-family: 'Orbitron', sans-serif;
+  color: rgba(240, 248, 255, 0.945);
+  justify-content: flex-start;
+  min-width: 300px;
+  align-items: center;
+  display: inline-flex;
+  background-color: #970000dc;
+  border-radius: 3px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.623);
+}
+
+.heading {
+  font-family: 'Monoton', cursive;
+  text-align: center;
+  color: #970000;
 }

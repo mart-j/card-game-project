@@ -1,0 +1,11 @@
+.timeWrapper {
+    position: absolute;
+    left: 100px;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.timer {
+    margin-left: 10px;
+}

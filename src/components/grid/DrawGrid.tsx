@@ -1,6 +1,7 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable @typescript-eslint/indent */
 import React, { Dispatch, FC, SetStateAction, useEffect } from 'react';
+
 import styles from './DrawGrid.module.scss';
 
 type Card = {
@@ -20,7 +21,9 @@ interface Props {
 
 const DrawGrid: FC<Props> = ({ revealCard, setGrid, grid, difficulty }) => {
   const cardImage = 'https://sourcemaking.com/files/v2/content/home-tb1.png';
+ 
   useEffect(() => {
+    
     generateGridSize();
   }, [difficulty]);
 

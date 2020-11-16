@@ -3,9 +3,10 @@ import styles from './Times.module.scss';
 
 interface Props {
   captureScore: string | undefined;
+  difficulty: number
 }
 
-const BestTime: FC<Props> = ({ captureScore }) => {
+const BestTime: FC<Props> = ({difficulty, captureScore }) => {
   const initialRender = useRef(true);
 
   useEffect(() => {
@@ -18,19 +19,19 @@ const BestTime: FC<Props> = ({ captureScore }) => {
 
   const checkBest = () => {
     if (
-      localStorage.getItem('captureScore')! <
+      (localStorage.getItem('captureScore')! <
         localStorage.getItem('bestScore')! ||
-      localStorage.getItem('bestScore') === null
+        localStorage.getItem('bestScore') === null) &&
+      difficulty === 16
     ) {
       localStorage.setItem('bestScore', localStorage.getItem('captureScore')!);
-     
     }
   };
 
   return (
     <div className={styles.timeWrapper}>
-      <div>LastTime: {localStorage.getItem('captureScore')}</div>
-      <div>BestTime: {localStorage.getItem('bestScore')!}</div>
+      <div>Latest Score: {localStorage.getItem('captureScore')}</div>
+      <div>Best Score: {localStorage.getItem('bestScore')!}</div>
     </div>
   );
 };
