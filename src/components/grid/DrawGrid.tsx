@@ -84,7 +84,7 @@ const DrawGrid: FC<Props> = ({ revealCard, setGrid, grid, difficulty }) => {
               onClick={() => revealCard(i)}
             >
               <div className={styles.inside}>
-                <img src={`${opened ? image : cardImage}`} alt="robot" />
+                <img className={styles.image} src={`${opened ? image : cardImage}`} alt="robot" />
               </div>
             </div>
           </>

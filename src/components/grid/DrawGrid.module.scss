@@ -14,6 +14,10 @@
   transform: translateX(-50%) translateY(-50%);
 }
 
+.image {
+  
+}
+
 .easy,
 .medium,
 .hard {
@@ -32,6 +36,15 @@
   padding: 7.4%;
 }
 
+
+.medium .inside .image {
+  width: 125px;
+}
+
 .hard {
   padding: 4.7%;
+}
+
+.hard .inside .image {
+  width: 100px;
 }

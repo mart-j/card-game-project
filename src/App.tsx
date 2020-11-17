@@ -93,15 +93,15 @@ const App = () => {
     <div className={styles.container}>
       <h1 className={styles.heading}>Memory Game</h1>
       <div className={styles.timeContainer}>
-      <div className={styles.timeWrapper}>
-        <Timer
-          time={time}
-          setTime={setTime}
-          isGameActive={isGameActive}
-          difficulty={difficulty}
-        />
-        <BestTime difficulty={difficulty} captureScore={captureScore} />
-      </div>
+        <div className={styles.timeWrapper}>
+          <Timer
+            time={time}
+            setTime={setTime}
+            isGameActive={isGameActive}
+            difficulty={difficulty}
+          />
+          <BestTime difficulty={difficulty} captureScore={captureScore} />
+        </div>
       </div>
       <Difficulty
         setIsGameActive={setIsGameActive}
@@ -109,12 +109,14 @@ const App = () => {
         setDicciculty={setDicciculty}
       />
 
-      <DrawGrid
-        revealCard={revealCard}
-        grid={grid}
-        setGrid={setGrid}
-        difficulty={difficulty}
-      />
+      {difficulty > 0 && (
+        <DrawGrid
+          revealCard={revealCard}
+          grid={grid}
+          setGrid={setGrid}
+          difficulty={difficulty}
+        />
+      )}
     </div>
   );
 };
