@@ -19,7 +19,7 @@ const Difficulty: FC<Props> = ({
     } else if (index === 1) {
       setDicciculty(36);
     } else if (index === 2) {
-      setDicciculty(4);
+      setDicciculty(100);
     }
   };
 

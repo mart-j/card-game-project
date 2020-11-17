@@ -34,7 +34,7 @@ const BestTime: FC<Props> = ({ difficulty, captureScore }) => {
           'bestScoreMedium',
           localStorage.getItem('captureScore')!,
         );
-      } else if ((difficulty === 4)) {
+      } else if ((difficulty === 100)) {
         localStorage.setItem(
           'bestScoreHard',
           localStorage.getItem('captureScore')!,
