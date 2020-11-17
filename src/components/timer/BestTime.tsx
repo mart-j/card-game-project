@@ -34,7 +34,7 @@ const BestTime: FC<Props> = ({ difficulty, captureScore }) => {
           'bestScoreMedium',
           localStorage.getItem('captureScore')!,
         );
-      } else if ((difficulty === 100)) {
+      } else if ((difficulty === 4)) {
         localStorage.setItem(
           'bestScoreHard',
           localStorage.getItem('captureScore')!,
@@ -45,11 +45,11 @@ const BestTime: FC<Props> = ({ difficulty, captureScore }) => {
 
   return (
     <div className={styles.timeWrapper}>
-   
+      <div>Latest Score: {localStorage.getItem('captureScore')}</div>
       <div>Best Scores</div>
-      <div>{localStorage.getItem('bestScore')!}: Easy</div>
-      <div>{localStorage.getItem('bestScoreMedium')!}: Hard</div>
-      <div>{localStorage.getItem('bestScoreHard')!}: Medium</div>
+      <div>Easy: {localStorage.getItem('bestScore')!}</div>
+      <div>Medium: {localStorage.getItem('bestScoreMedium')!}</div>
+      <div>Hard: {localStorage.getItem('bestScoreHard')!}</div>
     </div>
   );
 };
