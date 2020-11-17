@@ -3,10 +3,10 @@ import styles from './Times.module.scss';
 
 interface Props {
   captureScore: string | undefined;
-  difficulty: number
+  difficulty: number;
 }
 
-const BestTime: FC<Props> = ({difficulty, captureScore }) => {
+const BestTime: FC<Props> = ({ difficulty, captureScore }) => {
   const initialRender = useRef(true);
 
   useEffect(() => {
@@ -18,20 +18,38 @@ const BestTime: FC<Props> = ({difficulty, captureScore }) => {
   }, [captureScore]);
 
   const checkBest = () => {
-    if (
-      (localStorage.getItem('captureScore')! <
+    const condition =
+      localStorage.getItem('captureScore')! <
         localStorage.getItem('bestScore')! ||
-        localStorage.getItem('bestScore') === null) &&
-      difficulty === 16
-    ) {
-      localStorage.setItem('bestScore', localStorage.getItem('captureScore')!);
+      localStorage.getItem('bestScore') === null;
+
+    if (condition) {
+      if (difficulty === 16) {
+        localStorage.setItem(
+          'bestScore',
+          localStorage.getItem('captureScore')!,
+        );
+      } else if (difficulty === 36) {
+        localStorage.setItem(
+          'bestScoreMedium',
+          localStorage.getItem('captureScore')!,
+        );
+      } else if ((difficulty === 100)) {
+        localStorage.setItem(
+          'bestScoreHard',
+          localStorage.getItem('captureScore')!,
+        );
+      }
     }
   };
 
   return (
     <div className={styles.timeWrapper}>
-      <div>Latest Score: {localStorage.getItem('captureScore')}</div>
-      <div>Best Score: {localStorage.getItem('bestScore')!}</div>
+   
+      <div>Best Scores</div>
+      <div>{localStorage.getItem('bestScore')!}: Easy</div>
+      <div>{localStorage.getItem('bestScoreMedium')!}: Hard</div>
+      <div>{localStorage.getItem('bestScoreHard')!}: Medium</div>
     </div>
   );
 };
